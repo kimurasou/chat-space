@@ -45,4 +45,3 @@
 - has_many :groups_users
 - has_many :users, through: :groups_users
 
-t.references :tweet, index: true, foreign_key: true,
