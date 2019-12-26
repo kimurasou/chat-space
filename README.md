@@ -26,10 +26,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|text|string|null: false|
+|text|text||
 |image|text||
-|group_id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
+t.references :user, foreign_key: true
+t.references :group, foreign_key: true
 
 ### Association
 - belongs_to :group
@@ -39,10 +39,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|groupname|string|null: false|
-|group_id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
+|name|string|null: false|
 ### Association
 - has_many :messages
 - has_many :groups_users
 - has_many :users, through: :groups_users
+
+t.references :tweet, index: true, foreign_key: true,
