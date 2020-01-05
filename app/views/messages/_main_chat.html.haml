@@ -1,0 +1,43 @@
+-# <div class='MainChat'>
+-#   <div class='MainChat__group-info'></div>
+-#   <div class='MainChat__message-list'></div>
+-#   <div class='MainChat__message-form'></div>
+-# </div>
+
+.main-chat
+  .main-header
+    .main-header__left-box
+      %h2.main-header__left-box__group
+        test
+      %ul.main-header__left-box__member-list
+        Member:
+        %li.main-header__left-box__member-list__member
+          kimura
+    = link_to "#", class: "main-header__edit" do
+      .main-header__edit__btn
+        Edit
+  .message-lists
+    .message-list
+      .message-list__info
+        %p.message-list__info__user-name
+          so
+        %p.message-list__info__date
+          2019/12/31(tue)
+      %p.message-list__text
+        おはよう
+      .message-list__info
+        %p.message-list__info__user-name
+          kimura
+        %p.message-list__info__date
+          2019/1/1(wed)
+      %p.message-list__text
+        おはよう
+  .message-form
+    %form.new-message
+      %input{type: "hidden"}
+      .input-box
+        %input.input-box__text{:placeholder => "type a message"}
+        %label{class: "input-box__image"}
+          = icon('far', 'image')
+          %input.input-box__image__file{:type => "file"}
+      %input.submit-btn{type: "submit"}
