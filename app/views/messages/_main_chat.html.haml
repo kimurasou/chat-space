@@ -1,8 +1,4 @@
--# <div class='MainChat'>
--#   <div class='MainChat__group-info'></div>
--#   <div class='MainChat__message-list'></div>
--#   <div class='MainChat__message-form'></div>
--# </div>
+
 
 .main-chat
   .main-header
@@ -36,8 +32,8 @@
     %form.new-message
       %input{type: "hidden"}
       .input-box
-        %input.input-box__text{:placeholder => "type a message"}
+        %input.input-box__text{placeholder: "type a message"}
         %label{class: "input-box__image"}
           = icon('far', 'image')
-          %input.input-box__image__file{:type => "file"}
+          %input.input-box__image__file{type: "file"}
       %input.submit-btn{type: "submit"}
