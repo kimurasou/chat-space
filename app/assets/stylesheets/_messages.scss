@@ -9,7 +9,7 @@
 }
 
 .chat-side {
-  background-color: #ffffff;
+  background-color: $color-white;
   width: 300px;
   float: left;
   .side-header{
@@ -48,12 +48,12 @@
       &__group-name{
         font-size: 15px;
         margin-bottom: 5px;
-        color: #ffffff;
+        color: $color-white;
         font-weight: bold;
       }
       &__message{
         font-size: 11px;
-        color: #ffffff;
+        color: $color-white;
         font-weight: bold;
       }
     }
@@ -62,13 +62,13 @@
 }
 
 .main-chat {
-  background-color: #ffffff;
+  background-color: $color-white;
   height: 100vh;
   width: calc(100vw - 300px);
   float: left;
   .main-header{
     height: 100px;
-    background-color: #ffffff;
+    background-color: $color-white;
     border: 1px solid #eeeeee;
     padding: 0 40px;
     display: flex;
@@ -83,7 +83,7 @@
       &__member-list{
         display: flex;
         font-size: 12px;
-        color: #999999;
+        color: $color-gray;
       }
     }
     &__edit{
@@ -114,7 +114,7 @@
           font-weight: bold;
         }
         &__date{
-          color: #999999;
+          color: $color-gray;
           font-size: 12px;
           margin-left: 10px;
         }
