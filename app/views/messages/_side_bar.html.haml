@@ -1,0 +1,20 @@
+
+
+.chat-side
+  .side-header
+    .side-header__box
+      %p.side-header__box__user-name
+        木村
+      %ul.side-header__box__icon
+        %li.side-header__box__pencil
+          = link_to "#" do
+            = icon('fas', 'pen-square')
+        %li.side-header__box__setting
+          = link_to "#", class: "box__icon--setting" do
+            = icon('fas', 'cog')
+  .group-list
+    .group
+      %p.group__group-name
+        a
+      %p.group__message
+        まだメッセージがありません
