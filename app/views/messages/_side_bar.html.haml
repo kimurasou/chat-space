@@ -1,0 +1,18 @@
+.chat-side
+  .side-header
+    .side-header__box
+      %p.side-header__box__user-name
+        current_user.name
+      %ul.side-header__box__icon
+        %li.side-header__box__pencil
+          = link_to do
+            = icon('fas', 'pen-square')
+        %li.side-header__box__setting
+          = link_to edit_user_path(current_user) do
+            = icon('fas', 'cog', class: 'icon')
+  .group-list
+    .group
+      %p.group__group-name
+        a
+      %p.group__message
+        まだメッセージがありません
