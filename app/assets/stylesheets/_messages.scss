@@ -130,37 +130,64 @@
     }
   }
   .message-form{
+    // display: flex;
     background-color: #d2d2d2;
     height: 90px;
     padding: 20px 40px;
-    .new-message{
+    .form{
       display: flex;
-      .input-box{
-        position: relative;
+      &__message{
         width: 100%;
-        &__text{
-          height: 50px;
-          width: 100%;
-          padding: 0 40px 0 10px;
-          color: #434a54;
-          border-style: none;
+      }
+      .new_message{
+        display: flex;
+        width: 100vw;
+        // display: none;     
+      &__message{
+         height: 50px;
+        width: 100%;
+        padding: 0 40px 0 10px;
+        color: #434a54;
+        border-style: none;       
         }
+      
+      .form__mask{
+        position: relative;
+        // width: 100%;
+        // width: 100%;
+        // &__text{
+        //   height: 50px;
+        //   width: 100%;
+        //   padding: 0 40px 0 10px;
+        //   color: #434a54;
+        //   border-style: none;
+        // }
         &__image{
           position: absolute;
           top: 13px;
+          // display: none;
           right: 15px;
-          &__file{
+          // input{
+          //   display: none;
+          // }
+          // .icon{
+          //   display: none;
+          // }
+          // text-decoration: none;
+          .hidden{
             display: none;
           }
         }
       }
-      .submit-btn{
+      .form__submit{
         height:  50px;
         padding: 0 30px;
         margin-left: 15px;
         background-color: #38aef0;
         color: white;
+        // float: right;
       }
+    }
     }
   }
 }
