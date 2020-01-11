@@ -54,7 +54,6 @@ $
       contentType: false
     })
       .done(function(data){
-        // console.log('hoge')
         var html = buildHTML(data);
         $('.message-lists').append(html);
         $('.message-lists').animate({ scrollTop: $('.message-lists')[0].scrollHeight});
