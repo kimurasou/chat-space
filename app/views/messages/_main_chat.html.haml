@@ -7,9 +7,11 @@
         = @group.name
       %ul.main-header__left-box__member-list
         Member:
+        - @group.users.each do |user|
+          #{user.name}
+        
         %li.main-header__left-box__member-list__member
-          テスト
-          = @group.users.each
+          
     = link_to edit_group_path(@group), class: "main-header__edit" do
       .main-header__edit__btn
         Edit
