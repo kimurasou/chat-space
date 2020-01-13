@@ -1,45 +1,82 @@
 $(function(){
+
   function buildHTML(message){
-    if ( message.image ) {
-      var html =
-       `<div class="message-list" data-message-id=${message.id}>
-          <div class="message-list__info">
-            <div class="message-list__info__user-name">
-              ${message.user_name}
-            </div>
-            <div class="message-list__info__date">
-              ${message.created_at}
-            </div>
-          </div>
-          <div class="message-list__text">
-            <p class="lower-message__content">
-              ${message.content}
-            </p>
-          </div>
-          <img src=${message.image} >
-        </div>`
-      return html;
-    } else {
-      var html =
-       `<div class="message-list" data-message-id=${message.id}>
-          <div class="message-list__info">
-            <div class="message-list__info__user-name">
-              ${message.user_name}
-            </div>
-            <div class="message-list__info__date">
-              ${message.created_at}
-            </div>
-          </div>
-          <div class="message-list__text">
-            <p class="lower-message__content">
-              ${message.content}
-            </p>
-          </div>
-        </div>`
-      return html;
+    if ( message.content && message.image ) {
+      var html =`<div class="message-list" data-message-id` + message.id + `>` +
+        `<div class="message-list__info">` +
+          `<div class="message-list__info__user-name">` +
+            message.user_name +
+          `</div>` +
+          `<div class="message-list__info__date">` +
+            message.created_at +
+          `</div>` +
+        `</div>` +
+        `<div class="message-list__text">` +
+          `<p class="lower-message__content">` +
+            message.content +
+          `</p>` +
+          `<img src=` + message.image + `class="lower-message__image"` `>` +
+        `</div>` +
+       `</div>` 
+    } else if (message.content) {
+      var html =`<div class="message-list" data-message-id=` + message.id + `>` +
+        `<div class="message-list__info">` +
+          `<div class="message-list__info__user-name">` +
+            message.user_name +
+          `</div>` +
+          `<div class="message-list__info__date">`
+            message.created_at +
+          `</div>` +
+        `</div>` +
+        `<div class="message-list__text">` +
+          `<p class="lower-message__content">` +
+            message.content +
+          `</p>` +
+        `</div>` +
+      `</div>` 
+    } else if (message.image) {
+      var html =`<div class="message-list" data-message-id=` + message.id + `>` +
+        `<div class="message-list__info">` +
+          `<div class="message-list__info__user-name">` +
+            message.user_name +
+          `</div>` +
+          `<div class="message-list__info__date">`
+            message.created_at +
+          `</div>` +
+        `</div>` +
+        `<div class="message-list__text">` +
+          `<img src=` + message.image + `class="lower-message__image"` `>` +
+        `</div>` +
+      `</div>` 
     };
-  }
-$
+    return html;
+  };
+
+  var reloadMessages = function() {
+    last_message_id = $('.message-list:last').data("message-id");
+    $.ajax({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      if (messages.length !== 0) {
+        var insertHTML = '';
+        $.each(messages, function(i, message) {
+          insertHTML += buildHTML(message)
+        });
+        $('.message-list').append(insertHTML);
+        $('.message-list').animate({ scrollTop: $('.messages')[0].scrollHeight});
+        $("#new_message")[0].reset();
+        $(".form__submit").prop("disabled", false);
+      }
+    })
+    .fail(function() {
+      console.log('error');
+    });
+  };
+
   $('#new_message').on('submit', function(e){
 
     e.preventDefault()
@@ -65,4 +102,7 @@ $
     });
 
   });
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
 });
