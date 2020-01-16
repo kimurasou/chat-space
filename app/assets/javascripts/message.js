@@ -99,7 +99,7 @@ $(function(){
       })
       .fail(function() {
         alert("メッセージ送信に失敗しました");
-        $('.form__submit').prop('disabled', false);
+        // $('.form__submit').prop('disabled', false);
     });
 
   });
